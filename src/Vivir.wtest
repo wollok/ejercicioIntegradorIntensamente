@@ -1,0 +1,39 @@
+
+import Fixture.*
+test "Riley vive un evento enojado(o cualquier tipo) y este se agrega a los recuerdos del dia(ahora tiene 4 recuerdos)" {
+fixture.riley().vivirEvento(fixture.recuerdoEnojado())
+assert.that(fixture.riley().recuerdosDelDia().size()== 4)
+}
+test "Riley(felicidad 1000) asienta un recuerdo alegre, este se convierte en pensamiento central"{
+fixture.riley().asentar(fixture.recuerdoAlegre2())
+assert.that(fixture.riley().tienePensamientoCentral(fixture.recuerdoAlegre2()))
+}
+test "Monica(felicidad 400) asienta un recuerdo alegre, este no se convierte en pensamiento central"{
+	fixture.monica().asentar(fixture.recuerdoAlegre2())
+	assert.notThat(fixture.monica().tienePensamientoCentral(fixture.recuerdoAlegre2()))
+}
+test "SadAffleck(felicidad 1) asienta un recuerdo triste, y este lanza una excepcion "{
+	
+	assert.throwsExceptionWithMessage("La persona no puede soportar la tristeza",({fixture.sadAffleck().asentar(fixture.recuerdoTriste2())}))
+}
+test "Riley asienta un recuerdo triste y le quita el 10% de la felicidad (900)"{
+	fixture.riley().asentar(fixture.recuerdoTriste())
+	assert.equals(900,fixture.riley().felicidad())
+}
+test "Riley asienta un recuerdo disgustado, y no ocurre nada"{
+	// No hace falta probar con enojado y temeroso ya queson objecos de  la misma clase
+	fixture.riley().asentar(fixture.recuerdoDisgustado())
+	assert.notThat(fixture.riley().tienePensamientoCentral(fixture.recuerdoDisgustado()))
+}
+test "Riley asienta un recuerdo del tipo AlegriaTemor, este se convierte en pensamiento central"{
+	fixture.riley().asentar(fixture.recuerdoAlegriaTemor())
+assert.that(fixture.riley().tienePensamientoCentral(fixture.recuerdoAlegriaTemor()))
+}
+test "Monica asienta un recuerdo del tipo AlegriaTristeza y le quita el 10% de la felicidad(360)"{
+	fixture.monica().asentar(fixture.recuerdoAlegriaTristeza())
+	assert.equals(360,fixture.monica().felicidad())
+}
+test "El  pensamiento central de alegria(recuerdoalegre) Riley es dificil de entender(Poseen mas de 10 palabras)"{
+
+	assert.equals([fixture.recuerdoAlegre3()],fixture.riley().centralesDificiles())
+}
