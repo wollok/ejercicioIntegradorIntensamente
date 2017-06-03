@@ -1,0 +1,59 @@
+import Fixture.*
+import Riley.*
+test " Riley (dominante alegria) niega todo lo que no sea feliz" {
+	const riley = fixture.riley()
+	assert.that(riley.niega(fixture.recuerdoTriste()))
+	assert.that(riley.niega(fixture.recuerdoDisgustado()))
+	assert.that(riley.niega(fixture.recuerdoEnojado()))
+	assert.that(riley.niega(fixture.recuerdoAlegriaTristeza()))
+	assert.notThat(riley.niega(fixture.recuerdoAlegre()))
+}
+
+test "Riley asienta los recuerdos del dia:
+	el recuerdo alegre se convierte en pensamiento central
+	el triste le quita el 10% de la felicidad
+	el temeroso no hace nada"{
+	const riley = fixture.riley()
+	riley.agregarProcesoMental(asentamiento)
+	riley.dormir()
+	assert.that(riley.tienePensamientoCentral(fixture.recuerdoAlegre()))
+	assert.equals(900,riley.felicidad())
+	}
+test "Riley asienta selectivamente todos los pensamientos relacionados con la palabra unicornio"{
+	const riley = fixture.riley()
+	riley.agregarProcesoMental(new AsentamientoSelectivo("unicornio"))
+	riley.dormir()
+	assert.that(riley.tienePensamientoCentral(fixture.recuerdoAlegre()))
+}
+test "SadAffleck profundiza(dominante tristeza,recuerdo Alegre, recuerdo Triste, recuerdo Temeroso) solo el recuerdo temeroso"{
+	const sad = fixture.sadAffleck()
+	sad.agregarProcesoMental(profundizacion)
+	sad.dormir()
+	assert.that(sad.tieneLargoPlazo(fixture.recuerdoTemeroso()))
+}
+test "Riley profundiza el recuerdo alegre(dominante alegria,recuerdo Alegre, recuerdo Triste, recuerdo Temeroso)"{
+	const riley = fixture.riley()
+	riley.agregarProcesoMental(profundizacion)
+	riley.dormir()
+	assert.that(riley.tieneLargoPlazo(fixture.recuerdoAlegre()))
+}
+
+test "La restauracion Cognitiva hace que Riley quede en 1000 de felicidad"{
+	const riley = fixture.riley()
+	riley.agregarProcesoMental(restauracionCognitiva)
+	riley.dormir()
+	assert.equals(1000,riley.felicidad())
+}
+test "La restauracion Cognitiva hace que sadAffleck tenga 101 de felicidad"{
+	const sad = fixture.sadAffleck()
+	sad.agregarProcesoMental(restauracionCognitiva)
+	sad.dormir()
+	assert.equals(101,sad.felicidad())
+}
+
+test "Los recuerdos del dia de riley son liberados y la lista queda vacia"{
+	const riley = fixture.riley()
+	riley.agregarProcesoMental(liberacionDeRecuerdos)
+	riley.dormir()
+	assert.that(riley.recuerdosDelDia().isEmpty())
+}
