@@ -27,7 +27,9 @@ object tristeza inherits Emocion{
 		nena.disminuirFelicidad(10) 
 	}
 	override method niega(recuerdo){
-		return recuerdo.emocion() == alegria
+		return [recuerdo.emocion()] == [alegria]
+		//return recuerdo.emocion() == alegria
+		
 	}
 }
 
