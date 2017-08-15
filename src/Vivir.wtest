@@ -9,7 +9,7 @@ describe "Vivir" {
 	//EmocionesCompuestas
 	//([emociones])
 	const alegriaTristeza = new EmocionCompuesta([alegria,tristeza])
-	const enojoDisgusto = new EmocionCompuesta([enojo,disgusto])
+	
 	const alegriaTemor = new EmocionCompuesta([alegria,temor])
 	//Recuerdos
 	//(_fecha,_descripcion,_emocionDominante,_asentamiento) 
@@ -27,24 +27,25 @@ describe "Vivir" {
 	//Asentados
 	const recuerdoAlegre3 = new Recuerdo("Me gustan mucho los unicornios de color blanco y rosa pastel",new Date(21,09,2008),alegria)
 	const recuerdoTriste3  = new Recuerdo("",new Date(),tristeza)
-	const recuerdoEnojado2  = new Recuerdo("¿POR QUE NO PUEDO TENER ESE PELUCHE DE UNICORNIO QUE TANTO QUIERO?",new Date(),enojo)
-	const recuerdoTemeroso2  = new Recuerdo("",new Date(),temor)
+	
+	
 	const recuerdoDisgustado2  = new Recuerdo("",new Date(30,10,2009),disgusto)
-	const recuerdoAlegriaTemor2  = new Recuerdo ("",new Date(),alegriaTemor)
-	const recuerdoAlegriaTristeza2 = new Recuerdo("",new Date(),alegriaTristeza)
+	
+	
 	//Personas
 	//(_felicidad,_dominante,_recuerdosDelDia,_pensamientosCentrales,_largoPlazo,_fechaNacimiento)
 	const riley = new Persona(1000,alegria,[recuerdoAlegre,recuerdoTriste,recuerdoTemeroso],[recuerdoAlegre3,recuerdoTriste3],[],new Date(21,09,2005))
-	const lara = new Persona(750,enojo,[],[],[],new Date(03,02,2005))
+	
 	const monica = new Persona(400,disgusto,[],[],[],new Date(07,06,2005))
 	const sadAffleck = new Persona(1,tristeza,[recuerdoAlegre,recuerdoTriste,recuerdoTemeroso],[],[],new Date(04,06,2005))
-	const lisa = new Persona(1000,temor,[],[],[],new Date(19,06,2005))
-	const mona = new Persona (100,alegriaTristeza, [],[],[], new Date(28,01,2005))
+	
+	
 	const mica = new Persona(650,enojo,[],[],[recuerdoAlegre3,recuerdoDisgustado2],new Date(05,01,2005))
 
+	method nada() {}
 test "Riley vive un evento enojado(o cualquier tipo) y este se agrega a los recuerdos del dia(ahora tiene 4 recuerdos)" {
 riley.vivirEvento(recuerdoEnojado)
-assert.that(riley.recuerdosDelDia().size()== 4)
+assert.equals(4, riley.recuerdosDelDia().size())
 }
 test "Riley(felicidad 1000) asienta un recuerdo alegre, este se convierte en pensamiento central"{
 riley.asentar(recuerdoAlegre2)
