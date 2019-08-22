@@ -1,41 +1,24 @@
 import Emociones.*
 class Persona{ 
-	var felicidad
-	var dominante
+	var property felicidad
+	var property dominante
 	const fechaNacimiento
-	var pensamientoActual 
+	var property pensamientoActual = null 
 	
-	var recuerdosDelDia = []
-	var pensamientosCentrales = #{}
+	var property recuerdosDelDia = []
+	var pensamientosCentrales = []
 	var largoPlazo = []
 	var procesosMentales = []
 		
-	constructor(_felicidad,_dominante,_recuerdosDelDia,_pensamientosCentrales,_largoPlazo,_fechaNacimiento){
-		felicidad = _felicidad
-		dominante = _dominante
-		recuerdosDelDia = _recuerdosDelDia
-		pensamientosCentrales = _pensamientosCentrales
-		largoPlazo = _largoPlazo
-		fechaNacimiento = _fechaNacimiento // Estructura Date[Año-Mes-Dia]
-	}	
-	//Getters
-	method felicidad() = felicidad
-	method recuerdosDelDia() = recuerdosDelDia
-	
+
 	//method fecha() = fechaNacimiento
 	
 	//method largoPlazo() = largoPlazo
 	
-	method pensamientoActual() = pensamientoActual
-	method pensamientoActual(pensamiento) {
-		pensamientoActual = pensamiento
-	} 
-	
-
 	method disminuirFelicidad(porcentaje){
 		felicidad = felicidad * (100-porcentaje)/100
 		if (felicidad  < 1)
-			throw new Exception("La persona no puede soportar la tristeza")
+			throw new Exception(message = "La persona no puede soportar la tristeza")
 	}
 	
 	method aumentarFelicidad(cantidad){
@@ -45,15 +28,13 @@ class Persona{
 		return felicidad > 500
 	}
 	
-	method dominante(_dominante){
-		dominante=_dominante
-	}
+
 
 	method edad(){
 		return new Date().year() - fechaNacimiento.year()
 	}
 
-	//Demás Métodos
+	//Demï¿½s Mï¿½todos
 	method agregarLargoPlazo(_recuerdos){
 		largoPlazo.addAll(_recuerdos)
 	}
@@ -75,7 +56,7 @@ class Persona{
 
 	//Vivir 1
 	method vivirEvento(descripcion){
-		var recuerdo = new Recuerdo(descripcion, new Date(),dominante )
+		var recuerdo = new Recuerdo(descripcion  =descripcion, fecha = new Date(),emocion = dominante )
 		recuerdosDelDia.add(recuerdo)
 	}
 
@@ -139,7 +120,10 @@ class Persona{
 	
 	// Rememorar 8
 	method rememorar(){
-		 pensamientoActual = largoPlazo.findOrElse({recuerdo => recuerdo.esRememorable(self)},{new Exception("Nada para rememorar")})
+		 pensamientoActual = largoPlazo.findOrElse(
+		 	{recuerdo => recuerdo.esRememorable(self)},
+		 	{new Exception(message = "Nada para rememorar")}
+		 )
 	}
 	
 	// Rememorar 9
@@ -162,10 +146,6 @@ object asentamiento{
 class AsentamientoSelectivo {
 	var palabra
 	
-	constructor(_palabra) {
-		palabra = _palabra
-	}
-
 	method desencadenarse(nena){
 		nena.asentarRecuerdos(nena.recuerdosCon(palabra))
 	}
@@ -197,21 +177,12 @@ object liberacionDeRecuerdos{
 }
 
 class Recuerdo{
-	const fecha
-	const descripcion
-	const emocion
+	const fecha = new Date()
+	const property descripcion = ""
+	const property emocion
 	
-	constructor(_descripcion,_fecha, _emocion){
-		fecha = _fecha // Estructura Date[Año-Mes-Dia]
-		descripcion = _descripcion
-		emocion = _emocion
-	}
-
-	method emocion() = emocion
-	method descripcion()= descripcion
-
 	method esRememorable(nena){
-		return (new Date().year() - fecha.year())> (nena.edad()/2)
+		return (new Date().year() - fecha.year()) > (nena.edad()/2)
 	}
 	method asentarseEn(nena){
 		emocion.consecunciasEn(nena,self)
