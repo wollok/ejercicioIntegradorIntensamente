@@ -2,15 +2,6 @@ import Emociones.*
 import Riley.*
 
 describe "Vivir" {
-	//Emociones
-	const enojo = new Emocion()
-	const disgusto = new Emocion()
-	const temor = new Emocion()
-	//EmocionesCompuestas
-	//([emociones])
-	const alegriaTristeza = new EmocionCompuesta([alegria,tristeza])
-	
-	const alegriaTemor = new EmocionCompuesta([alegria,temor])
 	//Recuerdos
 	//Diarios
 	const recuerdoAlegre = new Recuerdo(descripcion = "Si! Tengo mi unicornio",emocion = alegria)
@@ -29,12 +20,12 @@ describe "Vivir" {
 	
 	//Personas
 	const riley = new Persona(felicidad = 1000,dominante = alegria,recuerdosDelDia = [recuerdoAlegre,recuerdoTriste,recuerdoTemeroso],pensamientosCentrales = [recuerdoAlegre3,recuerdoTriste3],fechaNacimiento = new Date(day=21,month=09,year=2005))
-	const monica = new Persona(felicidad = 400,dominante = disgusto,fechaNacimiento = new Date(day=7,month=6,year=2005))
+	const monica = new Persona(felicidad = 400,dominante = disgusto,fechaNacimiento = new Date().minusDays(3885)) 
 	const sadAffleck = new Persona(felicidad = 1,dominante = tristeza,largoPlazo = [recuerdoAlegre,recuerdoTriste,recuerdoTemeroso],fechaNacimiento = new Date(day = 04,month = 06,year = 2005))
 	const mica = new Persona(felicidad = 650,dominante = enojo,largoPlazo =[recuerdoAlegre3,recuerdoDisgustado2],fechaNacimiento = new Date(day = 5,month = 1, year= 2005))
 
-	test "Riley vive un evento enojado(o cualquier tipo) y este se agrega a los recuerdos del dia(ahora tiene 4 recuerdos)" {
-		riley.vivirEvento(recuerdoEnojado)
+	test "Riley vive un evento y este se agrega a los recuerdos del dia(ahora tiene 4 recuerdos)" {
+		riley.vivirEvento("resolvi parcial")
 		assert.equals(4, riley.recuerdosDelDia().size())
 	}
 	test "Riley(felicidad 1000) asienta un recuerdo alegre, este se convierte en pensamiento central"{

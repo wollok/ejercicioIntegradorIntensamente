@@ -11,7 +11,11 @@ class Emocion{
    			nena.agregarPensamientoCentral(recuerdo)
  	}
 }
-	
+
+const enojo = new Emocion()
+const disgusto = new Emocion()
+const temor = new Emocion()
+
 object alegria inherits Emocion{
 	override method consecunciasEn(nena, recuerdo){
 		if (nena.muyFeliz())
@@ -37,10 +41,6 @@ object tristeza inherits Emocion{
 class EmocionCompuesta{
 	const emociones
 	
-	constructor(_emociones){
-		emociones = _emociones
-	}
-	
 	method esAlegre(){
 		return emociones.contains(alegria)
 	}
@@ -52,3 +52,8 @@ class EmocionCompuesta{
 		return emociones.all{emocion => emocion.niega(recuerdo)}
 	}
 }
+
+const alegriaTristeza = new EmocionCompuesta(emociones = [alegria,tristeza])
+const alegriaTemor = new EmocionCompuesta(emociones = [alegria,temor])
+	
+

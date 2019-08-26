@@ -1,7 +1,7 @@
 import Emociones.*
 class Persona{ 
 	var property felicidad
-	var property dominante
+	var property dominante 
 	const fechaNacimiento
 	var property pensamientoActual = null 
 	
@@ -34,9 +34,9 @@ class Persona{
 		return new Date().year() - fechaNacimiento.year()
 	}
 
-	//Dem�s M�todos
-	method agregarLargoPlazo(_recuerdos){
-		largoPlazo.addAll(_recuerdos)
+	//Demás Métodos
+	method agregarLargoPlazo(recuerdos){
+		largoPlazo.addAll(recuerdos)
 	}
 	method tieneLargoPlazo(recuerdo) {
 		return largoPlazo.contains(recuerdo)
@@ -56,7 +56,7 @@ class Persona{
 
 	//Vivir 1
 	method vivirEvento(descripcion){
-		var recuerdo = new Recuerdo(descripcion  =descripcion, fecha = new Date(),emocion = dominante )
+		var recuerdo = new Recuerdo(descripcion  =descripcion, fecha = new Date(),emocion = dominante)
 		recuerdosDelDia.add(recuerdo)
 	}
 
@@ -122,7 +122,7 @@ class Persona{
 	method rememorar(){
 		 pensamientoActual = largoPlazo.findOrElse(
 		 	{recuerdo => recuerdo.esRememorable(self)},
-		 	{new Exception(message = "Nada para rememorar")}
+		 	{throw new Exception(message = "Nada para rememorar")}
 		 )
 	}
 	
