@@ -51,6 +51,7 @@ Por otro lado, a la hora de dormir ocurren muchos procesos mentales en la mente 
 - Liberación de recuerdos del día: todos los recuerdos del día se liberan, es decir, dejan de ser recuerdos del día. Este proceso siempre es el último en ocurrir. 
 
 Se pide:
+
 6. Saber si Riley niega un recuerdo
 7. Enviar a Riley a dormir, desencadenando todos sus procesos mentales
 
