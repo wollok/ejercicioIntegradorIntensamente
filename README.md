@@ -10,7 +10,7 @@ Y ahora nos toca modelar cómo estas emociones dominan la mente de Riley, una ni
 
 ![](intensamente.jpg)
 
-###Vivir
+### Vivir
 De Riley conocemos:
 - su nivel de felicidad, que inicialmente se encuentra en 1000
 - cuál de las cinco emociones es la dominante (la cual puede cambiar en cualquier momento) 
@@ -33,7 +33,7 @@ Se pide:
 5. Conocer los pensamientos centrales que sean difíciles de explicar. Un recuerdo es difícil de explicar cuando su descripción tiene más de 10 palabras
 
 
-###Descansar
+### Descansar
 
 Dependiendo del estado de ánimo actual, la mente es buena para negar ciertos recuerdos que no le agradan. En particular: 
 
@@ -54,7 +54,7 @@ Se pide:
 6. Saber si Riley niega un recuerdo
 7. Enviar a Riley a dormir, desencadenando todos sus procesos mentales
 
-###Rememorar
+### Rememorar
 
 Los viejos recuerdos a largo plazo pueden ser rememorados. Al rememorar, Riley trae un recuerdo cualquiera de la memoria a largo plazo que sea más antiguo que la mitad de su edad, y se convierte en su pensamiento actual. 
 
