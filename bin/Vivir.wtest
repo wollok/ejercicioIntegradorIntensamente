@@ -4,6 +4,7 @@ import Riley.*
 describe "Vivir" {
 	//Recuerdos
 	//Diarios
+	
 	const recuerdoAlegre = new Recuerdo(descripcion = "Si! Tengo mi unicornio",emocion = alegria)
 	const recuerdoAlegre2 = new Recuerdo(emocion = alegria)
 	const recuerdoTriste = new Recuerdo(emocion = tristeza)
@@ -11,8 +12,13 @@ describe "Vivir" {
 	const recuerdoEnojado = new Recuerdo(emocion = enojo)
 	const recuerdoTemeroso = new Recuerdo(descripcion = "Tengo miedo mami",emocion = temor)
 	const recuerdoDisgustado = new Recuerdo(emocion = disgusto)
+	
+	//Emociones compuestas
+	const alegriaTristeza = new EmocionCompuesta(emociones = [alegria,tristeza])
+	const alegriaTemor = new EmocionCompuesta(emociones = [alegria,temor])
 	const recuerdoAlegriaTemor = new Recuerdo (emocion = alegriaTemor)
 	const recuerdoAlegriaTristeza = new Recuerdo(emocion = alegriaTristeza)
+	
 	//Asentados
 	const recuerdoAlegre3 = new Recuerdo(descripcion = "Me gustan mucho los unicornios de color blanco y rosa pastel",fecha = new Date(day = 1, month = 1, year = 2009) ,emocion = alegria)
 	const recuerdoTriste3  = new Recuerdo(emocion = tristeza)
@@ -107,6 +113,15 @@ describe "Vivir" {
 		sadAffleck.agregarProcesoMental(restauracionCognitiva)
 		sadAffleck.dormir()
 		assert.equals(101,sadAffleck.felicidad())
+	}
+
+	only test "El control hormonal hace perder pensamientos centrales"{
+		sadAffleck.agregarProcesoMental(controlHormonal)
+		sadAffleck.agregarPensamientoCentral(recuerdoAlegre3)
+		sadAffleck.agregarPensamientoCentral(recuerdoTriste3)
+		sadAffleck.agregarPensamientoCentral(recuerdoAlegre)
+		sadAffleck.dormir()
+		assert.that(sadAffleck.pensamientosCentrales().isEmpty())
 	}
 	
 	test "Los recuerdos del dia de riley son liberados y la lista queda vacia"{

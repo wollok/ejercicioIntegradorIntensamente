@@ -6,15 +6,11 @@ class Persona{
 	var property pensamientoActual = null 
 	
 	var property recuerdosDelDia = []
-	var pensamientosCentrales = []
-	var largoPlazo = []
-	var procesosMentales = []
+	var pensamientosCentrales = #{}
+	const largoPlazo = []
+	const procesosMentales = []
 		
 
-	//method fecha() = fechaNacimiento
-	
-	//method largoPlazo() = largoPlazo
-	
 	method disminuirFelicidad(porcentaje){
 		felicidad = felicidad * (100-porcentaje)/100
 		if (felicidad  < 1)
@@ -56,20 +52,19 @@ class Persona{
 
 	//Vivir 1
 	method vivirEvento(descripcion){
-		var recuerdo = new Recuerdo(descripcion  =descripcion, fecha = new Date(),emocion = dominante)
+		const recuerdo = new Recuerdo(descripcion  =descripcion, fecha = new Date(),emocion = dominante)
 		recuerdosDelDia.add(recuerdo)
 	}
 
 	//Vivir 2
 	method asentar(recuerdo){
-//		if (!recuerdo.sePuedeAsentar())
 			recuerdo.asentarseEn(self)
 	}
-	//Vivir 3 (en realidad pide los ultimos, pero aca retornamos los primeros)
+	//Vivir 3 (Como pide los ultimos, se invierte la lista)
 	method recuerdosRecientes(){
-		return recuerdosDelDia.take(5)
+		return recuerdosDelDia.reverse().take(5)
 	}
-	//Vivir 4 (en realidad pide los ultimos, pero aca retornamos los primeros)
+	//Vivir 4 ()
 	method pensamientosCentrales(){
 		return pensamientosCentrales
 	}
@@ -103,7 +98,10 @@ class Persona{
 
 	method desequilibrarseHormonalmente(){
 		felicidad *= 0.85
-		pensamientosCentrales.drop(3)
+		3.times{i=>pensamientosCentrales.remove(self.pensamientoCentralMasAntiguo())}
+	}
+	method pensamientoCentralMasAntiguo(){
+		return pensamientosCentrales.min{p=>p.fecha()}
 	}
 
 	method mismaEmocionEnElDia(){
@@ -132,7 +130,7 @@ class Persona{
 	}
 
 	// Rememorar 10
-	method dejaVu(){
+	method dejaVu(){	
 		return self.tieneLargoPlazo(pensamientoActual)
 	}
 }
@@ -177,7 +175,7 @@ object liberacionDeRecuerdos{
 }
 
 class Recuerdo{
-	const fecha = new Date()
+	const property fecha = new Date()
 	const property descripcion = ""
 	const property emocion
 	

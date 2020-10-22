@@ -1,10 +1,13 @@
 import Riley.*
 class Emocion{
-	method consecunciasEn(nena,recuerdo){}
+	method consecunciasEn(nena,recuerdo) {
+		// No es un olvido, no hay que hacer nada (furia, disgusto, temor) 
+	}
 	
 	method niega(recuerdo) {
 		return false
 	}
+	method esAlegre() = false
 	
 	method agregarAPensamientosCentrales(nena,recuerdo){
   		if (!nena.tienePensamientoCentral(recuerdo))
@@ -24,6 +27,7 @@ object alegria inherits Emocion{
 	override method niega(recuerdo){
 		return recuerdo.emocion() != self 
 	}
+	override method esAlegre() = true
 }
 object tristeza inherits Emocion{
 	override method consecunciasEn(nena, recuerdo){
@@ -31,8 +35,7 @@ object tristeza inherits Emocion{
 		nena.disminuirFelicidad(10) 
 	}
 	override method niega(recuerdo){
-		return [recuerdo.emocion()] == [alegria]
-		//return recuerdo.emocion() == alegria
+		return recuerdo.emocion().esAlegre() 
 		
 	}
 }
@@ -42,7 +45,7 @@ class EmocionCompuesta{
 	const emociones
 	
 	method esAlegre(){
-		return emociones.contains(alegria)
+		return emociones.any{emocion=>emocion.esAlegre()}
 	}
 	
 	method consecunciasEn(nena,recuerdo){
@@ -53,7 +56,6 @@ class EmocionCompuesta{
 	}
 }
 
-const alegriaTristeza = new EmocionCompuesta(emociones = [alegria,tristeza])
-const alegriaTemor = new EmocionCompuesta(emociones = [alegria,temor])
+
 	
 

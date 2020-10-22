@@ -41,7 +41,7 @@ Dependiendo del estado de ánimo actual, la mente es buena para negar ciertos re
 - la tristeza niega sólo lo que es alegre
 - las demás emociones no niegan nada. 
 
-Por otro lado, a la hora de dormir ocurren muchos procesos mentales en la mente de Riley. Algunos de estos procesos son los siguientes (podría haber más):
+Por otro lado, a la hora de dormir pueden ocurrir algunos de estos procesos mentales en la mente de Riley. Algunos de estos procesos son los siguientes (podría haber más):
 
 - Asentamiento: todos los recuerdos del día se asientan.
 - Asentamiento selectivo: similar al asentamiento, pero sólo asienta los recuerdos que contengan una palabra clave dada. 
