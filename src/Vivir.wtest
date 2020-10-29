@@ -1,5 +1,4 @@
 import Emociones.*
-import Riley.*
 
 describe "Vivir" {
 	//Recuerdos
@@ -20,7 +19,7 @@ describe "Vivir" {
 	const recuerdoAlegriaTristeza = new Recuerdo(emocion = alegriaTristeza)
 	
 	//Asentados
-	const recuerdoAlegre3 = new Recuerdo(descripcion = "Me gustan mucho los unicornios de color blanco y rosa pastel",fecha = new Date(day = 1, month = 1, year = 2009) ,emocion = alegria)
+	const recuerdoAlegre3 = new Recuerdo(descripcion = "Me gustan mucho los unicornios de color blanco y rosa pastel",fecha = new Date(day = 1, month = 1, year = 2011) ,emocion = alegria)
 	const recuerdoTriste3  = new Recuerdo(emocion = tristeza)
 	const recuerdoDisgustado2  = new Recuerdo(fecha = new Date(day = 1, month = 1, year = 2010),emocion = disgusto) 	
 	
@@ -28,7 +27,7 @@ describe "Vivir" {
 	const riley = new Persona(felicidad = 1000,dominante = alegria,recuerdosDelDia = [recuerdoAlegre,recuerdoTriste,recuerdoTemeroso],pensamientosCentrales = [recuerdoAlegre3,recuerdoTriste3],fechaNacimiento = new Date(day=21,month=09,year=2005))
 	const monica = new Persona(felicidad = 400,dominante = disgusto,fechaNacimiento = new Date().minusDays(3885)) 
 	const sadAffleck = new Persona(felicidad = 1,dominante = tristeza,largoPlazo = [recuerdoAlegre,recuerdoTriste,recuerdoTemeroso],fechaNacimiento = new Date(day = 04,month = 06,year = 2005))
-	const mica = new Persona(felicidad = 650,dominante = enojo,largoPlazo =[recuerdoAlegre3,recuerdoDisgustado2],fechaNacimiento = new Date(day = 5,month = 1, year= 2005))
+	const mica = new Persona(felicidad = 650,dominante = enojo,largoPlazo =[recuerdoAlegre3,recuerdoDisgustado2],fechaNacimiento = new Date(day = 5,month = 1, year= 2007))
 
 	test "Riley vive un evento y este se agrega a los recuerdos del dia(ahora tiene 4 recuerdos)" {
 		riley.vivirEvento("resolvi parcial")
@@ -115,7 +114,7 @@ describe "Vivir" {
 		assert.equals(101,sadAffleck.felicidad())
 	}
 
-	only test "El control hormonal hace perder pensamientos centrales"{
+	test "El control hormonal hace perder pensamientos centrales"{
 		sadAffleck.agregarProcesoMental(controlHormonal)
 		sadAffleck.agregarPensamientoCentral(recuerdoAlegre3)
 		sadAffleck.agregarPensamientoCentral(recuerdoTriste3)
