@@ -1,6 +1,6 @@
 class Persona{ 
-	var property felicidad
-	var property dominante 
+	var felicidad
+	var dominante 
 	const fechaNacimiento
 	var property pensamientoActual = null 
 	
@@ -9,7 +9,8 @@ class Persona{
 	const largoPlazo = []
 	const procesosMentales = []
 		
-
+	method felicidad() = felicidad
+	
 	method disminuirFelicidad(porcentaje){
 		felicidad = felicidad * (100-porcentaje)/100
 		if (felicidad  < 1)
@@ -70,9 +71,8 @@ class Persona{
 		return pensamientosCentrales.filter({recuerdo => recuerdo.esDificil()})
 	}
 	//Descansar 6
-	method niega(recuerdo){
-		return dominante.niega(recuerdo)
-	}
+	method niega(recuerdo) = dominante.niega(recuerdo)
+
 	//Descansar 7
 	method dormir(){
 		procesosMentales.forEach{ proceso=>proceso.desencadenarse(self)}

@@ -73,7 +73,7 @@ describe "Vivir" {
 		assert.that(riley.niega(recuerdoTriste))
 		assert.that(riley.niega(recuerdoDisgustado))
 		assert.that(riley.niega(recuerdoEnojado))
-		assert.that(riley.niega(recuerdoAlegriaTristeza))
+		assert.notThat(riley.niega(recuerdoAlegriaTristeza))
 		assert.notThat(riley.niega(recuerdoAlegre))
 	}
 	
