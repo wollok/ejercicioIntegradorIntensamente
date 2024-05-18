@@ -1,6 +1,6 @@
 # Intensa Mente
  
-[![Build Status](https://travis-ci.org/wollok/ejercicioIntegradorIntensamente.svg?branch=master)](https://travis-ci.org/wollok/ejercicioIntegradorIntensamente)
+[![Build Status](https://github.com/wollok/ejercicioIntegradorIntensamente/actions/workflows/ci.yml/badge.svg)](https://github.com/wollok/ejercicioIntegradorIntensamente/actions/workflows/ci.yml)
 
 
 ## Ejercicio integrador
