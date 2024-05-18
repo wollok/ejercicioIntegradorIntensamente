@@ -1,6 +1,6 @@
 class Persona{ 
 	var felicidad
-	var dominante 
+	const dominante 
 	const fechaNacimiento
 	var property pensamientoActual = null 
 	
@@ -136,7 +136,7 @@ object asentamiento{
 }	
 
 class AsentamientoSelectivo {
-	var palabra
+	const palabra
 	
 	method desencadenarse(nena){
 		nena.asentarRecuerdos(nena.recuerdosCon(palabra))
@@ -242,7 +242,3 @@ class EmocionCompuesta{
 		return emociones.all{emocion => emocion.niega(recuerdo)}
 	}
 }
-
-
-	
-

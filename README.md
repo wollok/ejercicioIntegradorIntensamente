@@ -8,7 +8,7 @@
 **Los neurólogos modernos, tras años de ardua investigación, han terminado de modelar una irrefutable y perfectamente viable teoría sobre los interiores de nuestra cabeza: cinco emociones (Alegría, Tristeza, Disgusto, Furia y Temor) dominan nuestra mente.
 Y ahora nos toca modelar cómo estas emociones dominan la mente de Riley, una niñita de 11 años, y otras chicas similares a ella.**
 
-![](intensamente.jpg)
+![Intensamente](./img/intensamente.jpg)
 
 ### Vivir
 De Riley conocemos:
